@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip del Martes: Prompt estructurado para ahorrar 2 horas de correos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --slate: #0e1420;
+      --steel: #172133;
+      --neon: #42ff7b;
+      --accent: #4ec6ff;
+      --text: #f4f7fb;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, var(--slate), #05070c);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: min(1100px, 92vw);
+      margin: 2.5rem auto 1rem;
+      padding: 2rem;
+      background: rgba(15, 22, 35, 0.85);
+      border: 1px solid rgba(66, 255, 123, 0.3);
+      border-radius: 22px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    header img {
+      width: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 2px solid rgba(66, 255, 123, 0.4);
+    }
+    header h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+    header p {
+      margin: 0.5rem 0;
+      color: rgba(244, 247, 251, 0.85);
+    }
+    main {
+      width: min(1100px, 92vw);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    section {
+      background: rgba(16, 23, 36, 0.92);
+      border-radius: 18px;
+      border: 1px solid rgba(23, 255, 176, 0.2);
+      padding: 1.6rem;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    }
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .metric-card {
+      flex: 1 1 180px;
+      background: var(--steel);
+      border-radius: 14px;
+      padding: 1.2rem;
+      border: 1px solid rgba(78, 198, 255, 0.3);
+    }
+    .metric-card h3 {
+      margin: 0;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .metric-card p {
+      margin: 0.4rem 0 0;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--neon);
+    }
+    .tabs {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+    .tabs input {
+      display: none;
+    }
+    .tabs label {
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(78, 198, 255, 0.4);
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.75);
+      transition: all 0.2s ease;
+    }
+    .tabs input:checked + label {
+      background: var(--neon);
+      color: var(--slate);
+      border-color: transparent;
+      box-shadow: 0 8px 25px rgba(66, 255, 123, 0.45);
+    }
+    .tab-content {
+      margin-top: 1.5rem;
+    }
+    .tab-panel {
+      display: none;
+      animation: fade 0.3s ease;
+    }
+    #tab-descubrir:checked ~ .tab-panels #panel-descubrir,
+    #tab-estructura:checked ~ .tab-panels #panel-estructura,
+    #tab-automatiza:checked ~ .tab-panels #panel-automatiza {
+      display: block;
+    }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    details {
+      background: rgba(9, 14, 26, 0.8);
+      border: 1px solid rgba(66, 255, 123, 0.2);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    pre {
+      background: #02060c;
+      color: var(--neon);
+      padding: 1.2rem;
+      border-radius: 14px;
+      overflow-x: auto;
+      border: 1px solid rgba(78, 198, 255, 0.3);
+    }
+    code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.92rem;
+      white-space: pre-wrap;
+    }
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cta button {
+      border: none;
+      padding: 0.9rem 1.4rem;
+      border-radius: 12px;
+      background: var(--neon);
+      color: var(--slate);
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .cta button:hover {
+      transform: translateY(-2px);
+    }
+    @media (max-width: 600px) {
+      header {
+        grid-template-columns: 1fr;
+      }
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      pre {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Tip del Martes: Usa prompts estructurados para recuperar 2 horas de correos al día</h1>
+      <p>Convierte tu bandeja en un tablero accionable. Este flujo aprovecha IA generativa para clasificar, resumir y proponer respuestas ultraconcretas sin perder calidez humana.</p>
+      <div class="metrics">
+        <article class="metric-card">
+          <h3>Tiempo recuperado</h3>
+          <p>⏱️ 2 h/día</p>
+        </article>
+        <article class="metric-card">
+          <h3>Correos procesados</h3>
+          <p>📬 35 msgs</p>
+        </article>
+        <article class="metric-card">
+          <h3>Índice de respuesta</h3>
+          <p>✅ +68%</p>
+        </article>
+      </div>
+    </div>
+    <figure>
+      <img src="./assets/dashboard-productividad.jpg" alt="Panel de productividad con gráficas verdes y azules" loading="lazy">
+    </figure>
+  </header>
+
+  <main>
+    <section>
+      <div class="tabs">
+        <input type="radio" name="tabs" id="tab-descubrir" checked>
+        <label for="tab-descubrir">1. Descubrir</label>
+        <input type="radio" name="tabs" id="tab-estructura">
+        <label for="tab-estructura">2. Estructura</label>
+        <input type="radio" name="tabs" id="tab-automatiza">
+        <label for="tab-automatiza">3. Automatiza</label>
+      </div>
+      <div class="tab-panels">
+        <article id="panel-descubrir" class="tab-panel">
+          <h2>Mapeá tus correos con IA</h2>
+          <p>Arrancá con una tanda de 10 correos reales y pedile a la IA que etiquete: intención, urgencia, esfuerzo y tono. Con eso definís qué merece respuesta humana y qué podés estandarizar.</p>
+          <details>
+            <summary>Checklist rápido</summary>
+            <ul>
+              <li>📥 Exportá los correos como texto o márcalos en tu cliente.</li>
+              <li>🧠 Compartí contexto (rol, tono de marca, objetivos de la semana).</li>
+              <li>🏷️ Ajustá etiquetas hasta que coincidan con tu criterio.</li>
+            </ul>
+          </details>
+        </article>
+        <article id="panel-estructura" class="tab-panel">
+          <h2>Prompt estructurado = decisiones concretas</h2>
+          <p>Un buen prompt guía a la IA por bloques: contexto, objetivo de negocio, tono, límites y formato final. Así evitás correos eternos y recibís propuestas breves listas para aprobar.</p>
+        </article>
+        <article id="panel-automatiza" class="tab-panel">
+          <h2>Integra el flujo en tu calendario</h2>
+          <p>Agendá dos bloques de 25 minutos: uno para revisar resúmenes y otro para enviar respuestas aprobadas. Si usás Zapier/Make, conectá Gmail → IA → borradores para cerrar el circuito.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Prompt de regalo (copiá y pegá)</h2>
+      <p>Este prompt está optimizado para asistentes tipo ChatGPT, Claude o Gemini. Solo reemplazá el texto entre llaves.</p>
+      <pre><code>Actuá como mi Chief of Inbox para gestionar correos.
+Contexto del día: {prioridades principales}.
+Rol y voz: director/a de producto en {empresa}, tono humano, directo, positivo.
+Tareas:
+1. Resume cada correo en 2 líneas con intención + urgencia.
+2. Propone la respuesta ideal en 120 palabras máximo, usando viñetas si hay múltiples decisiones.
+3. Indica qué info falta y redacta la pregunta puntual.
+Formato final:
+- "Resumen": ...
+- "Respuesta sugerida": ...
+- "Siguiente acción": ... (elige entre Enviar / Delegar / Agendar / Archivar)
+Requisitos: preserva saludos en español rioplatense, evita tecnicismos innecesarios y marca cualquier deadline con emoji ⏰.</code></pre>
+      <div class="cta">
+        <p>¿Listo para acelerar? Pegá el prompt en tu asistente favorito y guardalo como "Macros de Inbox".</p>
+        <button onclick="navigator.clipboard.writeText(document.querySelector('pre code').innerText)">Copiar prompt</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Ritual semanal de seguimiento</h2>
+      <p>Sumá estos hitos al final de cada semana para asegurar que el tiempo ahorrado se traduzca en foco.</p>
+      <details>
+        <summary>Viernes – Retrospectiva de 10 minutos</summary>
+        <p>Anotá qué tipo de correo sigue tomando más tiempo y crea un nuevo bloque dentro del prompt para resolverlo.</p>
+      </details>
+      <details>
+        <summary>Domingo – Preparación</summary>
+        <p>Cargá en el prompt los objetivos de la semana y plantillas clave (ventas, soporte, alianzas).</p>
+      </details>
+      <details>
+        <summary>Lunes – Kick-off</summary>
+        <p>Ejecutá el prompt con los primeros correos críticos para entrar a la semana sin deuda comunicacional.</p>
+      </details>
+    </section>
+  </main>
+</body>
+</html>

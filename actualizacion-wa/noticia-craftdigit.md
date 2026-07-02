@@ -1,13 +1,14 @@
-# WhatsApp refuerza la privacidad con @username y PIN anti-spam
+# Actualización de WhatsApp: @username público + PIN anti-spam
 
 ![Mockup smartphone con candado luminoso representando seguridad en WhatsApp](assets/actualizacion-wa.jpg)
 
 **Ciudad Autónoma de Buenos Aires, 1 de julio de 2026.** WhatsApp anunció hoy una actualización doble pensada para blindar la privacidad. Desde esta semana, la app permite configurar un **@username único** para compartir el perfil sin revelar el número de teléfono, y suma un **código PIN obligatorio** para autorizar nuevos contactos y proteger sesiones desde dispositivos no verificados.
 
-### Cómo crear tu @username en 3 pasos (modo minimalista)
-1. Abrí **Configuración › Perfil** en la app y tocá *Nombre de usuario*.
-2. Escribí un identificador entre 5 y 30 caracteres (letras, números o guion bajo) y confirmá cuando aparezca disponible.
-3. Compartí el enlace `https://wa.me/@tusuario` con tu comunidad; no hace falta revelar el número en ningún canal público.
+### Guía express: @username + PIN
+1. **Crear @username:** Configuración › Perfil › *Nombre de usuario* → escribí un alias (5-30 caracteres, letras/números/_), guardá cuando quede libre.
+2. **Compartir:** Usá `https://wa.me/@tusuario` para invitar sin mostrar el número.
+3. **Activar PIN:** Configuración › Privacidad › Código PIN. Elegí 6 dígitos únicos y confirmalos.
+4. **Validación:** Cada nuevo dispositivo o contacto tendrá que ingresar ese PIN antes de abrir chat contigo.
 
 ## ¿Qué cambia para las marcas y comunidades?
 - **Identidad controlada:** Los perfiles públicos podrán difundirse con un identificador corto, lo que simplifica campañas y activaciones sin exponer números personales del equipo.

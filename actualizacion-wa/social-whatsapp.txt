@@ -1,0 +1,6 @@
+WhatsApp acaba de soltar combo privacidad:
+
+• Podés compartir tu @username en lugar del número. Ideal para comunidades, soporte y lanzamientos sin exponer el equipo.
+• Cada nuevo contacto debe validar un PIN que configurás vos. Sin ese código, no entran a tu bandeja.
+
+Resultado: menos spam, más consentimiento real. Si querés guiar al equipo, activá ambas funciones desde Configuración > Privacidad. Te dejamos la landing con detalles y mockups acá: {{URL_GITHUB_PAGES}}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@username + PIN | Actualización WhatsApp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --plomo: #1c2633;
+      --plomo-75: rgba(28, 38, 51, 0.75);
+      --neon: #5bff8f;
+      --neon-dark: #2bd96a;
+      --texto: #e2e8f0;
+      --gris: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #232f41, #0d1117 60%);
+      color: var(--texto);
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.5rem clamp(1rem, 4vw, 4rem);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--neon);
+    }
+
+    header .pill {
+      background: var(--plomo-75);
+      padding: 0.75rem 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    main {
+      flex: 1;
+      padding: clamp(1rem, 5vw, 5rem);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(1.5rem, 3vw, 3rem);
+      align-items: center;
+    }
+
+    .card {
+      background: var(--plomo-75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.25rem;
+      padding: clamp(1.25rem, 2vw, 2rem);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-copy h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin: 0 0 1rem;
+    }
+
+    .hero-copy p {
+      color: var(--gris);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .cta-group a {
+      text-decoration: none;
+      background: var(--neon);
+      color: #051208;
+      padding: 0.85rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-group a.secondary {
+      background: transparent;
+      border: 1px solid var(--neon);
+      color: var(--neon);
+    }
+
+    .cta-group a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(91, 255, 143, 0.25);
+    }
+
+    .media-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .media-wrapper img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      min-height: 280px;
+    }
+
+    .like-wall {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .like-card {
+      background: rgba(5, 18, 8, 0.6);
+      border: 1px solid rgba(91, 255, 143, 0.4);
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .like-card span {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: var(--gris);
+    }
+
+    .like-card button {
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1rem;
+      background: var(--neon);
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .like-card button:active {
+      transform: scale(0.98);
+    }
+
+    footer {
+      position: sticky;
+      bottom: 0;
+      background: #05070b;
+      border-top: 1px solid rgba(91, 255, 143, 0.2);
+      padding: 1rem clamp(1rem, 5vw, 4rem);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .footer-block {
+      flex: 1;
+      min-width: 220px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    footer p {
+      margin: 0;
+      color: var(--gris);
+    }
+
+    footer a {
+      color: var(--neon);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>@username + PIN seguro</h1>
+    <div class="pill">Nueva actualización WhatsApp • Julio 2026</div>
+  </header>
+
+  <main>
+    <section class="card hero-copy">
+      <h2>Tu número queda en reserva, la conversación no.</h2>
+      <p>WhatsApp habilitó el registro de @username para compartir tu identidad sin mostrar el teléfono. Además, cada intento de contacto pasa por un PIN anti-spam configurable desde Privacidad. Controlás quién llega y cuándo.</p>
+      <div class="cta-group">
+        <a href="#comunidad" aria-label="Unirse a la comunidad de WhatsApp">Sumarme a la comunidad</a>
+        <a class="secondary" href="https://github.com/macdevbot" target="_blank" rel="noopener">⭐ Star en GitHub</a>
+      </div>
+      <div class="like-wall" aria-labelledby="bloque-me-gusta">
+        <div class="like-card">
+          <span>¿Te sirve para lanzamientos?</span>
+          <button type="button">👍 Me Gusta</button>
+        </div>
+        <div class="like-card">
+          <span>Ideal para equipos de soporte</span>
+          <button type="button">👍 Me Gusta</button>
+        </div>
+        <div class="like-card">
+          <span>Menos spam, más leads calificados</span>
+          <button type="button">👍 Me Gusta</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="media-wrapper" aria-label="Visual de la actualización">
+      <img src="assets/actualizacion-wa.jpg" alt="Mockup de WhatsApp mostrando @username y pantalla de PIN">
+    </section>
+  </main>
+
+  <footer>
+    <div id="comunidad" class="footer-block">
+      <p>¿Querés recibir hacks de WhatsApp Marketing?</p>
+      <a href="https://chat.whatsapp.com/" target="_blank" rel="noopener">Sumate a la comunidad</a>
+    </div>
+    <div class="footer-block">
+      <p>¿Sos dev? Dejá tu ⭐ en nuestro repo y colaborá con la próxima landing.</p>
+      <a href="https://github.com/macdevbot-coder" target="_blank" rel="noopener">Abrir repositorio</a>
+    </div>
+  </footer>
+</body>
+</html>
